@@ -1,0 +1,34 @@
+custom.example.one:
+  path: "/custom/example-one"
+  defaults:
+    _title: "Example One"
+    _controller: '\Drupal\custom\Controller\ExampleController'
+  requirements:
+    _permission: "access content"
+
+custom.example_two:
+  path: "/custom/example-two"
+  defaults:
+    _title: "Example Two"
+    _controller: '\Drupal\custom\Controller\ExampleTwo'
+  requirements:
+    _role: "administrator"
+
+custom.offers_controller_hello:
+  path: "/offers/holi/{count}"
+  defaults:
+    _controller: '\Drupal\custom\Controller\OffersController::hello'
+    _title: "Offers"
+  requirements:
+    _permission: "access content"
+
+custom.example_access:
+  path: "/dmd/example-access"
+  defaults:
+    _controller: '\Drupal\custom\Controller\ExampleControllerCustomAccess::build'
+    _title: "Routing Example with Custom Access Control"
+    # This is an example of passing a static value to both the build and access
+    # methods.
+    min_username_length: 4
+  requirements:
+    _custom_access: '\Drupal\custom\Controller\ExampleControllerCustomAccess::access'
