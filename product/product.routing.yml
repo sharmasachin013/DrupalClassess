@@ -1,0 +1,7 @@
+product.example_product_card:
+  path: "/product/example/product/card"
+  defaults:
+    _title: "Example Product Card"
+    _controller: '\Drupal\product\Controller\ExampleProductCard'
+  requirements:
+    _permission: "access content"

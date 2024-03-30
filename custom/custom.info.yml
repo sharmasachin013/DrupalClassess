@@ -1,5 +1,8 @@
-name: 'custom'
+name: "custom"
 type: module
-description: 'Custom Module'
+description: "Custom Module"
 package: Custom
 core_version_requirement: ^10
+
+libraries:
+  - flexi_card_demo/global

@@ -1,0 +1,81 @@
+/* @import url("https://fonts.googleapis.com/css?family=Muli&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
+
+.path-flexicard {
+  background-image: linear-gradient(to top, #0097b2 0%, #73d957 100%);
+}
+
+#heading {
+  background-color: rgba(211, 191, 37, 0.165);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#heading {
+  background-color: rgba(211, 191, 37, 0.165);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 29px;
+  color: #fff;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.container-view {
+  display: flex;
+  width: 90vw;
+}
+
+.frame {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: all 700ms ease-in;
+}
+
+.frame h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.frame.focused {
+  flex: 5;
+}
+
+.frame.focused h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .frame:nth-of-type(4),
+  .frame:nth-of-type(5) {
+    display: none;
+  }
+}

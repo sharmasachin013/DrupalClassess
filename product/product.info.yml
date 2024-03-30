@@ -1,0 +1,5 @@
+name: "product"
+type: module
+description: "Product"
+package: no
+core_version_requirement: ^10

@@ -32,3 +32,52 @@ custom.example_access:
     min_username_length: 4
   requirements:
     _custom_access: '\Drupal\custom\Controller\ExampleControllerCustomAccess::access'
+
+dmd.node_viewer:
+  path: "/dmd/{node}/{view_mode}"
+  defaults:
+    _controller: '\Drupal\custom\Controller\NodeViewer::view'
+    _title_callback: '\Drupal\custom\Controller\NodeViewer::titleCallback'
+    view_mode: "full"
+  requirements:
+    _permission: "access content"
+
+dmd.example:
+  path: "/dmd/example"
+  defaults:
+    _title: "Example"
+    _controller: '\Drupal\custom\Controller\DmdController::build'
+  requirements:
+    _permission: "access content"
+
+custom.filedownload:
+  path: "/dmd/filedownload"
+  defaults:
+    _title: "File Download"
+    _controller: '\Drupal\custom\Controller\FileDownload::build'
+  requirements:
+    _permission: "access content"
+
+custom.urltest:
+  path: "/dmd/urltest"
+  defaults:
+    _title: "File Download"
+    _controller: '\Drupal\custom\Controller\FileDownload::urltest'
+  requirements:
+    _permission: "access content"
+
+custom.di:
+  path: "/dmd/example/di"
+  defaults:
+    _title: "Dependency  Injection in a Controller in Drupal 10"
+    _controller: '\Drupal\custom\Controller\FileDownload::exampleDi'
+  requirements:
+    _permission: "access content"
+
+custom.example:
+  path: "/custom/example"
+  defaults:
+    _title: "Form"
+    _form: 'Drupal\custom\Form\ExampleForm'
+  requirements:
+    _permission: "access content"

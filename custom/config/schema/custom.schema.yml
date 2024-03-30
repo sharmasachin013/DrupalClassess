@@ -1,0 +1,15 @@
+views.style.custom_flexi_card:
+  type: views_style
+  label: 'Flexi Card'
+  mapping:
+    wrapper_class:
+      type: string
+      label: 'Wrapper class'
+
+views.style.custom_flexicard_style_plugin:
+  type: views_style
+  label: 'flexicard style plugin'
+  mapping:
+    wrapper_class:
+      type: string
+      label: 'Wrapper class'

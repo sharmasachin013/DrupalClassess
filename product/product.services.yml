@@ -1,0 +1,4 @@
+services:
+  product.details:
+    class: Drupal\product\Services\ProductDetails
+    arguments: ["@entity_type.manager", "@messenger"]

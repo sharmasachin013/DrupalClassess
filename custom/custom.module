@@ -4,3 +4,166 @@
  * @file
  * Primary module hooks for custom module.
  */
+
+use Drupal\Core\Template\Attribute;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+
+/**
+ * Prepares variables for views-style-custom-flexi-card.html.twig template.
+ */
+function template_preprocess_views_style_custom_flexi_card(array &$variables): void {
+  $view = $variables['view'];
+  $options = $view->style_plugin->options;
+
+
+  // Fetch wrapper classes from handler options.
+  if ($options['wrapper_class']) {
+    $variables['attributes']['class'] = explode(' ', $options['wrapper_class']);
+  }
+
+  $variables['default_row_class'] = $options['default_row_class'];
+  $i = 0;
+  foreach ($variables['rows'] as $id => $row) {
+    $i++;
+    $field_items = $row['#row']->_entity->get('field_image_');
+foreach ($field_items as $item) {
+  $file_id = $item->target_id;
+
+}
+$file = File::load($file_id);
+
+$uri = $file->getFileUri();
+$realpath = \Drupal::service('file_system')->realpath($uri);
+$path = str_replace($_SERVER['DOCUMENT_ROOT'] . '/', '', $realpath); 
+    $variables['rows'][$id] = [
+      'content' => $row,
+      'attributes' => new Attribute(),
+    ];
+    $variables['rows'][$id]['title'] = $row['#row']->_entity->getTitle();
+     $variables['rows'][$id]['url'] = $path;
+    
+    $variables['rows'][$id]['id'] = 'node-'.$i;
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
+    }
+  }
+}
+
+
+
+
+/**
+ * Prepares variables for views-style-custom-flexicard-style-plugin.html.twig template.
+ */
+function template_preprocess_views_style_custom_flexicard_style_plugin(array &$variables): void {
+  $view = $variables['view'];
+  $options = $view->style_plugin->options;
+
+  // Fetch wrapper classes from handler options.
+  if ($options['wrapper_class']) {
+    $variables['attributes']['class'] = explode(' ', $options['wrapper_class']);
+  }
+
+  $variables['default_row_class'] = $options['default_row_class'];
+  $i = 0;
+  foreach ($variables['rows'] as $id => $row) {
+    $i++;
+    $field_items = $row['#row']->_entity->get('field_image_');
+    foreach ($field_items as $item){
+      $file_id = $item->target_id;
+    }
+    $file = File::load($file_id);
+    $uri = $file->getFileUri();
+    $realpath = \Drupal::service('file_system')->realpath($uri);
+    $path = str_replace($_SERVER['DOCUMENT_ROOT'] . '/', '', $realpath); 
+    $variables['rows'][$id]['path'] = $path;
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
+    }
+  }
+}
+
+
+/**
+ * Prepares variables for views-style-test.html.twig template.
+ */
+function template_preprocess_views_style_test(array &$variables): void {
+  $view = $variables['view'];
+  $options = $view->style_plugin->options;
+
+  $variables['default_row_class'] = $options['default_row_class'];
+  foreach ($variables['rows'] as $id => $row) {
+    $variables['rows'][$id] = [
+      'content' => $row,
+      'attributes' => new Attribute(),
+    ];
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
+    }
+  }
+}
+
+/**
+ * Prepares variables for views-style-my-style.html.twig template.
+ */
+
+ function template_preprocess_views_style_my_style(&$variables){
+
+  $i = 0;
+  foreach ($variables['rows'] as $id => $row) {
+    $i++;
+    $field_items = $row['#row']->_entity->get('field_image_');
+foreach ($field_items as $item) {
+  $file_id = $item->target_id;
+
+}
+$file = File::load($file_id);
+
+$uri = $file->getFileUri();
+$realpath = \Drupal::service('file_system')->realpath($uri);
+$path = str_replace($_SERVER['DOCUMENT_ROOT'] . '/', '', $realpath); 
+    $variables['rows'][$id] = [
+      'content' => $row,
+      'attributes' => new Attribute(),
+    ];
+    $variables['rows'][$id]['title'] = $row['#row']->_entity->getTitle();
+     $variables['rows'][$id]['url'] = $path;
+    
+    $variables['rows'][$id]['id'] = 'node-'.$i;
+  } 
+ }
+
+ /**
+ * Prepares variables for views-style-demo.html.twig template.
+ */
+function template_preprocess_views_style_demo(&$variables){
+  $view = $variables['view'];
+  $options = $view->style_plugin->options;
+
+  // Fetch wrapper classes from handler options.
+  if ($options['wrapper_class']) {
+    $variables['attributes']['class'] = explode(' ', $options['wrapper_class']);
+  }
+
+  $variables['default_row_class'] = $options['default_row_class'];
+  $i = 0;
+  foreach ($variables['rows'] as $id => $row) {
+    $i++;
+    $field_items = $row['#row']->_entity->get('field_image_');
+    foreach ($field_items as $item){
+      $file_id = $item->target_id;
+    }
+    $file = File::load($file_id);
+    $uri = $file->getFileUri();
+    $realpath = \Drupal::service('file_system')->realpath($uri);
+    $path = str_replace($_SERVER['DOCUMENT_ROOT'] . '/', '', $realpath); 
+    $variables['rows'][$id]['path'] = $path;
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
+    }
+  }
+
+}
+
+

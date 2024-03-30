@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for product module.
+ */
+
+ /**
+ * Implements hook_theme().
+ */
+
+ function product_theme($existing, $type, $theme, $path) {
+
+  return [
+    'product_card' => [
+      'variables' => ['logo' => NULL,'img' => NULL, 'img_2' => NULL],
+    ],
+  ];
+
+}
+
+function product_page_attachments(&$variables) {
+  $variables['#attached']['library'][] = 'product/global';
+}
